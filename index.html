@@ -11,6 +11,16 @@
 </head>
 <body>
 <div id="root"></div>
+<script>
+  window.onerror = function (msg, url, line, col, error) {
+    var root = document.getElementById("root");
+    if (root) {
+      root.innerHTML = '<pre style="white-space:pre-wrap;padding:20px;color:#8B3A2B;font-family:monospace;font-size:13px;">Erreur JS : ' +
+        msg + '\nLigne : ' + line + '\n\n' + (error && error.stack ? error.stack : '') + '</pre>';
+    }
+    return false;
+  };
+</script>
 <script type="text/babel" data-presets="react">
 const { useState, useEffect, useMemo } = React;
 
